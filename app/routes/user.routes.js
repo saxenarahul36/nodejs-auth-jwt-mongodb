@@ -1,3 +1,4 @@
+const catchAsync = require("../utils/function");
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
 
@@ -25,4 +26,6 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  app.get("/api/alluser", [authJwt.verifyToken], controller.getAllUser);
 };

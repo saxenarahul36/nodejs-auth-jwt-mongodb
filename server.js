@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+var morgan = require("morgan");
 const db = require("./app/models");
 const dbConfig = require("./app/config/db.config");
 
@@ -7,7 +8,7 @@ const dbConfig = require("./app/config/db.config");
 const PORT = process.env.PORT || 8080;
 
 const app = express();
-
+app.use(morgan("tiny"));
 var corsOptions = {
   origin: "http://localhost:8081",
 };
